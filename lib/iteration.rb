@@ -8,15 +8,15 @@ def join_ingredients(src)
   # As such, there should be a new String for each inner array, or pair
   #
   # array_1 = [['pepperoni', 'sausage'], ['green olives', 'green peppers'], ['onions', 'pineapple']]
-  result = []
+  array = []
+  x = 0 
 
-  i_counter = 0
-  while i_counter < src.length do #src is array_1
-    toppings_pair = src[i_counter] #makes toppings_pair refer to array_1[0], so the first pair of toppings
-    result << "I love #{toppings_pair[0]} and #{toppings_pair[1]} on my pizza" #notice how just index 0 and 1 are needed instead of having to do array_1[0][0] and [0][1]
-    i_counter += 1 #increases the counter so the method moves on to the next pair of toppings
+  while x < src.length do
+    food_pair = src[x]
+    array << "I love #{food_pair[0]} and #{food_pair[1]} on my pizza"
+    x += 1
   end
-  result #returns the result array. 
+  array
 end
 
 def find_greater_pair(src)
@@ -25,12 +25,12 @@ def find_greater_pair(src)
   # that are in the inner Arrays
   #[[-1, -900], [10, 30], [0, 0], [14, 16 * -2.5], [Math.sin(1), 19]]
   result = []
-  i = 0
+  x = 0 
 
-  while i < src.length do
-    result << (src[i][0] > src[i][1] ? src[i][0] : src[i][1]) 
-    #if a < b, then print a, else print b
-    i+= 1
+  while x < src.length do
+    num_pairs = src[x]
+    (num_pairs[0] < num_pairs[1]) ? result << num_pairs[1] : result << num_pairs[0]
+    x += 1
   end
   result
 end
@@ -44,13 +44,14 @@ def total_even_pairs(src)
   # the number was even. Review the operator documentation if you've forgotten
   # this!
   total = 0
-  i = 0
+  x = 0
 
-  while i < src.length do
-    if (src[i][0] % 2 == 0) && (src[i][1] % 2 == 0) #checks if both numbers are even by using modulo
-      total += (src[i][0] + src[i][1]) #if they are, increase total by the pair
+  while x < src.length do
+    num_pair = src[x]
+    if (num_pair[0] % 2 == 0 && num_pair[1] % 2 == 0)
+      total += (num_pair[0] + num_pair[1]) 
     end
-    i += 1 #increase counter by 1
+    x += 1
   end
-  total #returns the total
+  total
 end
